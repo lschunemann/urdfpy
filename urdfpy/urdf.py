@@ -1000,7 +1000,7 @@ class Inertial(URDFType):
 
     @inertia.setter
     def inertia(self, value):
-        value = np.asanyarray(value).astype(np.float)
+        value = np.asanyarray(value).astype(float)
         if not np.allclose(value, value.T):
             raise ValueError('Inertia must be a symmetric matrix')
         self._inertia = value
