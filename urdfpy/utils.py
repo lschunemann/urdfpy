@@ -261,7 +261,7 @@ def configure_origin(value):
     if value is None:
         value = np.eye(4)
     elif isinstance(value, (list, tuple, np.ndarray)):
-        value = np.asanyarray(value).astype(np.float)
+        value = np.asanyarray(value).astype(float)
         if value.shape == (6,):
             value = xyz_rpy_to_matrix(value)
         elif value.shape != (4,4):
