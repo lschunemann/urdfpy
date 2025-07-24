@@ -311,7 +311,7 @@ class Box(URDFType):
 
     @size.setter
     def size(self, value):
-        self._size = np.asanyarray(value).astype(np.float)
+        self._size = np.asanyarray(value).astype(float)
         self._meshes = []
 
     @property
@@ -467,7 +467,7 @@ class Mesh(URDFType):
     @scale.setter
     def scale(self, value):
         if value is not None:
-            value = np.asanyarray(value).astype(np.float)
+            value = np.asanyarray(value).astype(float)
         self._scale = value
 
     @property
@@ -747,7 +747,7 @@ class Material(URDFType):
     @color.setter
     def color(self, value):
         if value is not None:
-            value = np.asanyarray(value).astype(np.float)
+            value = np.asanyarray(value).astype(float)
             value = np.clip(value, 0.0, 1.0)
             if value.shape != (4,):
                 raise ValueError('Color must be a (4,) float')
@@ -1767,7 +1767,7 @@ class Joint(URDFType):
         if value is None:
             value = np.array([1.0, 0.0, 0.0])
         else:
-            value = np.asanyarray(value).astype(np.float)
+            value = np.asanyarray(value).astype(float)
             if value.shape != (3,):
                 raise ValueError('Invalid shape for axis, should be (3,)')
             value = value / np.linalg.norm(value)
@@ -2615,7 +2615,7 @@ class URDF(URDFType):
         elif isinstance(ct, dict):
             if len(ct) > 0:
                 for k in ct:
-                    val = np.asanyarray(ct[k]).astype(np.float)
+                    val = np.asanyarray(ct[k]).astype(float)
                     if traj_len is None:
                         traj_len = len(val)
                     elif traj_len != len(val):
